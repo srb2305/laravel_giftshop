@@ -9,7 +9,8 @@ class ContactController extends Controller
 {
     public function index()
     {
-        // code...for show data
+        $data = DB::table('contacts')->get();
+        return view('contact-all',compact('data'));
     }
 
     public function create(Request $request)
@@ -25,4 +26,12 @@ class ContactController extends Controller
         return view('contact');
     }
 
+    public function destroy($id)
+    {
+       DB::table('contacts')
+       ->where('id',$id)
+       ->delete();
+
+        return redirect('contact-all');
+    }
 }
