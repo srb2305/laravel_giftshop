@@ -31,7 +31,29 @@ class ContactController extends Controller
        DB::table('contacts')
        ->where('id',$id)
        ->delete();
-
         return redirect('contact-all');
+    }
+
+    public function edit($id)
+    {
+        $data = DB::table('contacts')
+            ->where('id',$id)
+            ->first();
+        return view('contact-edit',compact('data'));
+    }
+
+    public function update(Request $request){
+        $name = $request['name'];
+        $number = $request['number'];
+        $id = $request['id'];
+        
+        $update = [
+            'first_name' => $name, 
+            'mobile' => $number
+        ];
+        DB::table('contacts')
+        ->where('id',$id)
+        ->update($update);
+        return view('contact');   
     }
 }

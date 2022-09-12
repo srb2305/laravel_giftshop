@@ -37,6 +37,10 @@ Route::get('contact-all', [ContactController::class,'index']);
 
 Route::get('contact-delete/{id}',[ContactController::class,'destroy']);
 
+Route::get('contact-edit/{id}',[ContactController::class,'edit']);
+
+Route::post('contact-update',[ContactController::class,'update']);
+
 
 
 //Route::post('contact-delete','ContactController@destroy');

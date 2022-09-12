@@ -16,6 +16,8 @@
 		<td>{{$val->email}}</td>
 		<td>{{$val->mobile}}</td>
 		<td>
+			<a href="{{url('contact-edit/'.$val->id)}}">Edit</a>
+
 			<a href="{{url('contact-delete/'.$val->id)}}">Delete</a>
 		</td>
 	</tr>
