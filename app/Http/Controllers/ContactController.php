@@ -23,7 +23,8 @@ class ContactController extends Controller
             'mobile' => $number
         ];
         DB::table('contacts')->insert($insert);
-        return view('contact');
+        //return view('contact');
+        return redirect('contact');
     }
 
     public function destroy($id)
@@ -54,6 +55,6 @@ class ContactController extends Controller
         DB::table('contacts')
         ->where('id',$id)
         ->update($update);
-        return view('contact');   
+        return redirect('contact-all');   
     }
 }

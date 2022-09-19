@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +16,7 @@ use App\Http\Controllers\FeedbackController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 Route::get('about', function () {
     return view('about');
@@ -44,3 +45,10 @@ Route::post('contact-update',[ContactController::class,'update']);
 
 
 //Route::post('contact-delete','ContactController@destroy');
+
+
+Route::resource('product',ProductController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
