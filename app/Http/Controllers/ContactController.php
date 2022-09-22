@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contact;
 use DB;
 
 class ContactController extends Controller
 {
     public function index()
     {
-        $data = DB::table('contacts')->get();
+       // $data = DB::table('contacts')->get();
+        $data = Contact::get();
         return view('contact-all',compact('data'));
     }
 
@@ -22,24 +24,29 @@ class ContactController extends Controller
             'first_name' => $name, 
             'mobile' => $number
         ];
-        DB::table('contacts')->insert($insert);
+        //DB::table('contacts')->insert($insert);
+        Contact::insert($insert);
         //return view('contact');
         return redirect('contact');
     }
 
     public function destroy($id)
     {
-       DB::table('contacts')
-       ->where('id',$id)
-       ->delete();
+       // DB::table('contacts')
+       // ->where('id',$id)
+       // ->delete();
+
+       Contact::where('id',$id)->delete();
+
         return redirect('contact-all');
     }
 
     public function edit($id)
     {
-        $data = DB::table('contacts')
-            ->where('id',$id)
-            ->first();
+        // $data = DB::table('contacts')
+        //     ->where('id',$id)
+        //     ->first();
+        $data = Contact::where('id',$id)->first();
         return view('contact-edit',compact('data'));
     }
 
@@ -52,9 +59,11 @@ class ContactController extends Controller
             'first_name' => $name, 
             'mobile' => $number
         ];
-        DB::table('contacts')
-        ->where('id',$id)
-        ->update($update);
+        // DB::table('contacts')
+        // ->where('id',$id)
+        // ->update($update);
+
+        Contact::where('id',$id)->update($update);
         return redirect('contact-all');   
     }
 }
