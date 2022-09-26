@@ -305,6 +305,7 @@
       <!--bootstrap working-->
       <script src="js/bootstrap.min.js"></script>
       <!-- //bootstrap working-->
+      @yield('script')
    </body>
 </html>
 
