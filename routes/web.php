@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ExamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,3 +57,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/search', function(){
     return view('search');
 });
+
+Route::get('/exam', [App\Http\Controllers\ExamController::class, 'index'])->name('exam');
